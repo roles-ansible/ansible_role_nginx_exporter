@@ -1,0 +1,51 @@
+---
+
+- name: Create nginx_exporter system group
+  group:
+    name: "{{ nginx_exporter_system_group }}"
+    state: present
+    system: true
+
+- name: Create the nginx_exporter user
+  user:
+    name: "{{ nginx_exporter_system_user }}"
+    groups: "{{ nginx_exporter_system_group }}"
+    append: true
+    shell: /usr/sbin/nologin
+    system: true
+    createhome: false
+
+- name: Get nginx_exporter binary to local folder
+  get_url:
+    url: "{{ nginx_exporter_download_url }}"
+    dest: "/tmp/nginx_exporter-{{ nginx_exporter_version }}.linux-{{ go_arch }}.tar.gz"
+  register: __download_binary
+  until: __download_binary is succeeded
+  retries: 5
+  delay: 2
+  delegate_to: localhost
+  check_mode: false
+
+- name: Unpack node_exporter binary
+  unarchive:
+    src: "/tmp/nginx_exporter-{{ nginx_exporter_version }}.linux-{{ go_arch }}.tar.gz"
+    dest: "/tmp"
+    creates: "/tmp/nginx_exporter-{{ nginx_exporter_version }}.linux-{{ go_arch }}/nginx_exporter"
+  delegate_to: localhost
+  check_mode: false
+  become: false
+
+- name: Create local bin dir
+  file:
+    path: /usr/local/bin
+    state: directory
+    mode: 0755
+
+- name: Propagate nginx_exporter binary
+  copy:
+    src: /tmp/nginx-prometheus-exporter
+    dest: /usr/local/bin/nginx_exporter
+    mode: 0750
+    owner: "{{ nginx_exporter_system_user }}"
+    group: "{{ nginx_exporter_system_group }}"
+  notify: restart nginx_exporter

@@ -1,0 +1,7 @@
+---
+
+- name: Create nginx_exporter systemd file
+  template:
+    src: nginx_exporter.service.j2
+    dest: /etc/systemd/system/nginx_exporter.service
+  notify: restart nginx_exporter
