@@ -28,10 +28,18 @@ geerlingguy.nginx
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables
-passed in as parameters) is always nice for users too:
-
     - hosts: servers
+      vars:
+        nginx_vhosts:
+          - listen: "127.0.0.1:8080 default"
+            server_name: "_"
+            filename: "status.conf"
+            extra_parameters: |
+              location / {
+                  stub_status  on;
+                  access_log   off;
+              }
+
       roles:
         - geerlingguy.nginx
         - cloudweeb.nginx_exporter
