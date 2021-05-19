@@ -1,11 +1,13 @@
 ---
+- name: install nginx exporter
+  ansible.builtin.import_tasks: install.yml
 
-- import_tasks: install.yml
-
-- import_tasks: config.yml
+- name: create nginx exporter config
+  ansible.builtin.import_tasks: config.yml
 
 - name: Ensure nginx_exporter is started and enabled
-  systemd:
+  become: true
+  ansible.builtin.systemd:
     name: nginx_exporter
     state: started
     enabled: true

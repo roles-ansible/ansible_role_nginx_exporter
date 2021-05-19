@@ -1,26 +1,23 @@
 ---
 galaxy_info:
   role_name: nginx_exporter
-  author: Agnesius Santo Naibaho
-  description: Install Nginx Exporter Prometheus
-  company: Cloudweeb
+  author: do1jlr
+  description: Install Nginx Prometheus Exporter
 
   license: MIT
 
-  min_ansible_version: 2.7
+  min_ansible_version: 2.11
 
   platforms:
     - name: EL
-      versions:
-        - 7
+      versions: all
     - name: Debian
-      versions:
-        - stretch
+      versions: all
+    - name: Ubuntu
+      versions: all
 
   galaxy_tags:
     - nginx
     - monitoring
     - prometheus
-
-dependencies:
-  - geerlingguy.nginx
+    - exporter

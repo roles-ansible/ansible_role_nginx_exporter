@@ -1,7 +1,7 @@
 ---
-
-- name: restart nginx_exporter
-  systemd:
+- name: systemctl restart nginx_exporter
+  become: true
+  ansible.builtin.systemd:
     name: nginx_exporter
     state: restarted
     daemon_reload: true
