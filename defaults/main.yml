@@ -9,8 +9,8 @@ nginx_exporter_system_user: "{{ nginx_exporter_system_group }}"
 nginx_exporter_download_url: >
   https://github.com/nginxinc/nginx-prometheus-exporter/releases/download/v{{ nginx_exporter_version }}/nginx-prometheus-exporter_{{ nginx_exporter_version }}_linux_{{ go_arch }}.tar.gz
 
-nginx_exporter_checksum_url: >
-  https://github.com/nginxinc/nginx-prometheus-exporter/releases/download/v{{ nginx_exporter_version }}/sha256sums.txt
-
 nginx_exporter_listen_address: 0.0.0.0:9113
 nginx_exporter_scrape_uri: http://127.0.0.1:8080/stub_status
+
+# perform simple version check for this role? (true is recomended)
+submodules_versioncheck: false
