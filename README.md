@@ -45,11 +45,9 @@ You need a nginx server with stub_status enabled. For example ``geerlingguy.ngin
 
  License
 -------
-
 MIT / BSD
 
  Author Information
 ------------------
-
-Agnesius Santo Naibaho
-L3D *([DO1JLR](https://github.com/do1jlr))*
++ Agnesius Santo Naibaho
++ L3D *([DO1JLR](https://github.com/do1jlr))*
