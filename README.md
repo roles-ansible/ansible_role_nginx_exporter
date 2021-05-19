@@ -15,7 +15,7 @@ Role Variables
 
 | variable                      | default                           | comment                       |
 |-------------------------------|-----------------------------------|-------------------------------|
-| nginx_exporter_version        | 0.3.0                             | nginx exporter version        |
+| nginx_exporter_version        | 0.9.0                             | nginx exporter version        |
 | nginx_exporter_nginx_plus     | false                             | set true if use nginx plus    |
 | nginx_exporter_listen_address | 0.0.0.0:9113                      | nginx exporter listen address |
 | nginx_exporter_scrape_uri     | <http://127.0.0.1:8080/stub_status> | nginx status url              |
