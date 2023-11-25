@@ -52,4 +52,4 @@
     mode: 0750
     owner: "{{ nginx_exporter_system_user }}"
     group: "{{ nginx_exporter_system_group }}"
-  notify: restart nginx_exporter
+  notify: 'systemctl restart nginx_exporter'
