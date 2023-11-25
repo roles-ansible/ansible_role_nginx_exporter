@@ -20,6 +20,7 @@
   ansible.builtin.get_url:
     url: "{{ nginx_exporter_download_url }}"
     dest: "/tmp/nginx_exporter-{{ nginx_exporter_version }}.linux-{{ go_arch }}.tar.gz"
+    mode: 0644
   register: __download_binary
   until: __download_binary is succeeded
   retries: 5

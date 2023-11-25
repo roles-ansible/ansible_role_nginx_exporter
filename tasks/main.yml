@@ -4,11 +4,11 @@
     file: versioncheck.yml
   when: submodules_versioncheck | bool
 
-- name: install nginx exporter
+- name: Install nginx exporter
   ansible.builtin.import_tasks:
     file: install.yml
 
-- name: create nginx exporter config
+- name: Create nginx exporter config
   ansible.builtin.import_tasks:
     file: config.yml
 

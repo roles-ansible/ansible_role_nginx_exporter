@@ -1,5 +1,6 @@
 ---
-- name: systemctl restart nginx_exporter
+- name: Run systemctl restart nginx_exporter
+  listen: systemctl restart nginx_exporter
   become: true
   ansible.builtin.systemd:
     name: nginx_exporter
