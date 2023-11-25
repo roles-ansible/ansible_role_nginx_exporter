@@ -1,23 +1,27 @@
 ---
 galaxy_info:
   role_name: nginx_exporter
-  author: do1jlr
+  author: l3d
+  namespace: l3d
   description: Install Nginx Prometheus Exporter
 
   license: MIT
 
-  min_ansible_version: 2.11
+  min_ansible_version: 2.14
 
   platforms:
     - name: EL
-      versions: all
+      versions: ['all']
     - name: Debian
-      versions: all
+      versions: ['all']
     - name: Ubuntu
-      versions: all
+      versions: ['all']
+    - name: ArchLinux
+      versions: ['all']
 
   galaxy_tags:
     - nginx
     - monitoring
     - prometheus
     - exporter
+    - linux
