@@ -6,7 +6,13 @@ After=network.target
 User={{ nginx_exporter_system_user }}
 Group={{ nginx_exporter_system_group }}
 
+{% if nginx_exporter_nginx_plus %}
 ExecStart=/usr/local/bin/nginx_exporter \
-          {% if nginx_exporter_nginx_plus %}-nginx.plus\ {% endif %}
+          -nginx.plus \
           -nginx.scrape-uri {{ nginx_exporter_scrape_uri }} \
           -web.listen-address {{ nginx_exporter_listen_address }}
+{% else %}
+ExecStart=/usr/local/bin/nginx_exporter \
+          -nginx.scrape-uri {{ nginx_exporter_scrape_uri }} \
+          -web.listen-address {{ nginx_exporter_listen_address }}
+{% endif %}
