@@ -3,8 +3,9 @@
 go_arch_map:
   i386: '386'
   x86_64: 'amd64'
+  aarch64: 'arm64'
 
 go_arch: "{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}"
 
-playbook_version_number: 8  # should be int
+playbook_version_number: 9  # should be int
 playbook_version_path: 'l3d.nginx_exporter.version'
